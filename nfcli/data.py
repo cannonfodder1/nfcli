@@ -8,7 +8,6 @@ TAGS_FILE = "data/tags.json"
 COMPONENTS_FILE = "data/components.json"
 MUNITIONS_FILE = "data/munitions.json"
 
-
 def load_json(path: str) -> dict:
     try:
         with open(path) as f:
@@ -62,7 +61,6 @@ class _Tags:
         for key in removed_keys:
             self.tags.pop(key)
 
-
 class _Components:
     def __init__(self) -> None:
         self.components = load_json(COMPONENTS_FILE).get("Components")
@@ -72,14 +70,13 @@ class _Components:
             if component.get("Key") == key:
                 return component.get("Name")
         return None
-
+        
     def get_name_or_key(self, key: str) -> str:
         name = self.get_name(key)
         if name is None:
             return key
         else:
             return name
-
 
 class _Munitions:
     def __init__(self) -> None:
